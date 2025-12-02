@@ -13,6 +13,7 @@ import NFTDetail from './pages/NFTDetail';
 import MyAccount from './pages/MyAccount';
 import NFTManagement from './pages/NFTManagement';
 import Notifications from './pages/Notifications';
+import DAO from './pages/DAO';
 
 const App: React.FC = () => {
   return (
@@ -26,6 +27,9 @@ const App: React.FC = () => {
           <Route path="/otc" element={<OTC />} />
           <Route path="/otc/deal/create-otc" element={<CreateOTCDeal />} />
           <Route path="/otc/deal/:id" element={<OTCDealDetail />} />
+
+          {/* DAO Route */}
+          <Route path="/dao" element={<DAO />} />
 
           <Route path="/activity" element={<Activity />} />
           <Route path="/notifications" element={<Notifications />} />

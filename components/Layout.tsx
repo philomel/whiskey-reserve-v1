@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
-import { Search, Bell, Wallet, Menu, User, Home, Compass, PlusCircle, Repeat, X, LogOut, Grid, List, Heart, Settings as SettingsIcon } from 'lucide-react';
+import { Search, Bell, Wallet, Menu, User, Home, Compass, PlusCircle, Repeat, X, LogOut, Grid, List, Heart, Settings as SettingsIcon, Vote } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -19,15 +19,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen flex flex-col bg-whisky-main text-white relative">
       {/* Top Navigation (Desktop & Mobile Header) */}
-      <header className="sticky top-0 z-50 w-full border-b border-whisky-gold/10 bg-whisky-main/90 backdrop-blur-md">
+      <header className="sticky top-0 z-50 w-full border-b border-whisky-gold/10 bg-whisky-main/90 backdrop-blur-md shadow-md">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-whisky-gold to-whisky-card flex items-center justify-center border border-whisky-gold/30">
-              <span className="font-serif text-xl font-bold text-whisky-dark">W</span>
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-whisky-gold to-whisky-accent flex items-center justify-center border border-whisky-gold/30 shadow-lg">
+              <span className="font-serif text-xl font-bold text-whisky-dark">R</span>
             </div>
             <span className="font-serif text-2xl font-bold text-whisky-light tracking-wide group-hover:text-whisky-gold transition-colors">
-              WHISKY CASK
+              The Whisky Reserve
             </span>
           </Link>
 
@@ -39,6 +39,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Link to="/otc" className={`text-sm font-medium hover:text-whisky-gold transition-colors ${isActive('/otc') ? 'text-whisky-gold' : 'text-gray-300'}`}>
               OTC Deals
             </Link>
+            <Link to="/dao" className={`text-sm font-medium hover:text-whisky-gold transition-colors ${isActive('/dao') ? 'text-whisky-gold' : 'text-gray-300'}`}>
+              DAO Governance
+            </Link>
             <Link to="/activity" className={`text-sm font-medium hover:text-whisky-gold transition-colors ${isActive('/activity') ? 'text-whisky-gold' : 'text-gray-300'}`}>
               Activity
             </Link>
@@ -47,17 +50,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           {/* Right Actions */}
           <div className="flex items-center gap-4">
             <div className="relative hidden lg:block">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input 
                 type="text" 
                 placeholder="Search cask, bottles..." 
-                className="bg-whisky-card/50 border border-whisky-gold/20 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-whisky-gold/50 w-64 text-gray-200 placeholder-gray-600 transition-all"
+                className="bg-whisky-card/50 border border-whisky-gold/20 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-whisky-gold/50 w-64 text-gray-200 placeholder-gray-500 transition-all focus:bg-whisky-card"
               />
             </div>
 
             <Link to="/notifications" className="relative p-2 hover:bg-whisky-card rounded-full transition-colors group">
               <Bell className="w-5 h-5 text-gray-300 group-hover:text-whisky-gold" />
-              <span className="absolute top-1.5 right-2 w-2 h-2 bg-red-500 rounded-full border border-whisky-main"></span>
+              <span className="absolute top-1.5 right-2 w-2 h-2 bg-whisky-accent rounded-full border border-whisky-main"></span>
             </Link>
 
             {/* User Dropdown */}
@@ -93,7 +96,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                       <SettingsIcon className="w-4 h-4" /> Settings
                     </Link>
                     <div className="border-t border-whisky-gold/10 mt-2 pt-2">
-                       <button className="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-400 hover:bg-whisky-main transition-colors text-left">
+                       <button className="w-full flex items-center gap-3 px-4 py-2 text-sm text-whisky-accent hover:bg-whisky-main transition-colors text-left">
                         <LogOut className="w-4 h-4" /> Disconnect Wallet
                       </button>
                     </div>
@@ -102,7 +105,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               )}
             </div>
 
-            <button className="hidden md:flex items-center gap-2 bg-gradient-to-r from-whisky-gold to-whisky-light text-whisky-dark px-5 py-2 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(212,165,116,0.3)]">
+            <button className="hidden md:flex items-center gap-2 bg-gradient-to-r from-whisky-gold to-whisky-accent text-white px-5 py-2 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(242,165,22,0.3)]">
               <Wallet className="w-4 h-4" />
               <span>Connect</span>
             </button>
@@ -132,15 +135,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </main>
 
       {/* Footer (Desktop) */}
-      <footer className="hidden md:block bg-whisky-dark border-t border-whisky-gold/10 pt-16 pb-8">
+      <footer className="hidden md:block bg-whisky-main border-t border-whisky-gold/10 pt-16 pb-8">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-4 gap-8 mb-12">
             <div>
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-8 h-8 rounded-full bg-whisky-gold/20 flex items-center justify-center border border-whisky-gold/30">
-                  <span className="font-serif text-lg font-bold text-whisky-gold">W</span>
+                  <span className="font-serif text-lg font-bold text-whisky-gold">R</span>
                 </div>
-                <span className="font-serif text-xl font-bold text-whisky-light">WHISKY CASK</span>
+                <span className="font-serif text-xl font-bold text-whisky-light">The Whisky Reserve</span>
               </div>
               <p className="text-gray-500 text-sm leading-relaxed mb-6">
                 The premier marketplace for fine spirit NFTs and OTC deals. Liquid assets on the blockchain, verified and secure.
@@ -167,16 +170,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
 
             <div>
-              <h4 className="text-whisky-gold font-serif mb-4">Resources</h4>
+              <h4 className="text-whisky-gold font-serif mb-4">Community</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="#" className="hover:text-whisky-light">About Us</a></li>
+                <li><Link to="/dao" className="hover:text-whisky-light">DAO Governance</Link></li>
                 <li><a href="#" className="hover:text-whisky-light">Help Center</a></li>
                 <li><a href="#" className="hover:text-whisky-light">Partners</a></li>
               </ul>
             </div>
           </div>
           <div className="border-t border-whisky-card pt-8 flex justify-between items-center text-xs text-gray-600">
-            <p>© 2025 Whisky Cask Marketplace. All rights reserved.</p>
+            <p>© 2025 The Whisky Reserve. All rights reserved.</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-whisky-gold">Privacy Policy</a>
               <a href="#" className="hover:text-whisky-gold">Terms of Service</a>
@@ -186,7 +189,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </footer>
 
       {/* Mobile Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-whisky-card/95 backdrop-blur-lg border-t border-whisky-gold/20 md:hidden z-50 pb-safe">
+      <nav className="fixed bottom-0 left-0 right-0 bg-whisky-card/95 backdrop-blur-lg border-t border-whisky-gold/20 md:hidden z-50 pb-safe shadow-lg">
         <div className="grid grid-cols-5 h-16 items-center">
           <Link to="/" className={`flex flex-col items-center justify-center gap-1 ${isActive('/') ? 'text-whisky-gold' : 'text-gray-400'}`}>
             <Home className="w-5 h-5" />
@@ -196,11 +199,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Compass className="w-5 h-5" />
             <span className="text-[10px]">Explore</span>
           </Link>
-          <Link to="/create" className={`flex flex-col items-center justify-center gap-1 ${isActive('/create') ? 'text-whisky-gold' : 'text-gray-400'}`}>
-            <div className="w-10 h-10 bg-whisky-gold rounded-full flex items-center justify-center -mt-4 border-4 border-whisky-card shadow-lg">
-              <PlusCircle className="w-6 h-6 text-whisky-dark" />
-            </div>
-            <span className="text-[10px] mt-1">Create</span>
+          <Link to="/dao" className={`flex flex-col items-center justify-center gap-1 ${isActive('/dao') ? 'text-whisky-gold' : 'text-gray-400'}`}>
+             <Vote className="w-5 h-5" />
+             <span className="text-[10px]">DAO</span>
           </Link>
           <Link to="/otc" className={`flex flex-col items-center justify-center gap-1 ${isActive('/otc') ? 'text-whisky-gold' : 'text-gray-400'}`}>
             <Repeat className="w-5 h-5" />

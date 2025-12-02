@@ -12,8 +12,8 @@ const Explore: React.FC = () => {
     name: i % 2 === 0 ? `Macallan Sherry Hogshead 2015 #${i}` : `Glenfiddich 1973 #${i}`,
     collection: i % 2 === 0 ? 'Macallan' : 'Glenfiddich',
     image: `https://picsum.photos/400/400?random=${50+i}`,
-    price: parseFloat((Math.random() * 10 + 2).toFixed(2)),
-    currency: 'ETH',
+    price: parseFloat((Math.random() * 5000 + 2000).toFixed(0)),
+    currency: 'USDC',
     likes: Math.floor(Math.random() * 100),
     status: 'buy_now',
     type: i % 2 === 0 ? 'Cask' : 'Bottle'
@@ -25,7 +25,7 @@ const Explore: React.FC = () => {
         
         {/* Sidebar Filters */}
         <aside className="w-full lg:w-64 flex-shrink-0">
-          <div className="bg-whisky-card border border-whisky-gold/10 rounded-xl p-6 sticky top-24">
+          <div className="bg-whisky-card border border-whisky-gold/10 rounded-xl p-6 sticky top-24 shadow-lg">
             <div className="flex items-center gap-2 mb-6 text-whisky-gold">
               <Filter className="w-5 h-5" />
               <h3 className="font-serif font-bold text-lg">Filters</h3>
@@ -37,16 +37,16 @@ const Explore: React.FC = () => {
                 <input 
                   type="text" 
                   placeholder="Filter by name..." 
-                  className="w-full bg-whisky-main border border-whisky-gold/20 rounded-lg p-3 text-sm focus:border-whisky-gold outline-none"
+                  className="w-full bg-whisky-main border border-whisky-gold/20 rounded-lg p-3 text-sm focus:border-whisky-gold outline-none text-gray-200"
                 />
               </div>
 
               {/* Price Range */}
               <div>
-                <h4 className="text-sm font-semibold text-gray-300 mb-3">Price Range (ETH)</h4>
+                <h4 className="text-sm font-semibold text-gray-300 mb-3">Price Range (USDC)</h4>
                 <div className="flex gap-2">
-                  <input type="number" placeholder="Min" className="w-1/2 bg-whisky-main border border-whisky-gold/20 rounded p-2 text-sm outline-none" />
-                  <input type="number" placeholder="Max" className="w-1/2 bg-whisky-main border border-whisky-gold/20 rounded p-2 text-sm outline-none" />
+                  <input type="number" placeholder="Min" className="w-1/2 bg-whisky-main border border-whisky-gold/20 rounded p-2 text-sm outline-none text-gray-200" />
+                  <input type="number" placeholder="Max" className="w-1/2 bg-whisky-main border border-whisky-gold/20 rounded p-2 text-sm outline-none text-gray-200" />
                 </div>
               </div>
 
@@ -56,7 +56,7 @@ const Explore: React.FC = () => {
                 <div className="space-y-2">
                   {['Macallan', 'Glenfiddich', 'Glenlivet', 'Highland Park', 'Balvenie', 'Laphroaig'].map((cat) => (
                     <label key={cat} className="flex items-center gap-2 text-sm text-gray-400 hover:text-whisky-light cursor-pointer">
-                      <input type="checkbox" className="rounded border-whisky-gold/30 bg-whisky-main text-whisky-gold focus:ring-0" />
+                      <input type="checkbox" className="rounded border-whisky-gold/30 bg-whisky-main text-whisky-gold focus:ring-0 focus:ring-offset-0" />
                       {cat}
                     </label>
                   ))}
@@ -67,9 +67,9 @@ const Explore: React.FC = () => {
                <div>
                 <h4 className="text-sm font-semibold text-gray-300 mb-3">Status</h4>
                 <div className="space-y-2">
-                  {['Buy Now', 'On Auction', 'New'].map((status) => (
+                  {['Listed', 'Unlisted', 'Sold Out'].map((status) => (
                     <label key={status} className="flex items-center gap-2 text-sm text-gray-400 hover:text-whisky-light cursor-pointer">
-                      <input type="checkbox" className="rounded border-whisky-gold/30 bg-whisky-main text-whisky-gold focus:ring-0" />
+                      <input type="checkbox" className="rounded border-whisky-gold/30 bg-whisky-main text-whisky-gold focus:ring-0 focus:ring-offset-0" />
                       {status}
                     </label>
                   ))}

@@ -10,8 +10,8 @@ const mockTrending: NFT[] = [
     name: 'Highland Park 50yo',
     collection: 'Distillery Rare',
     image: 'https://picsum.photos/400/400?random=1',
-    price: 4.5,
-    currency: 'ETH',
+    price: 4500,
+    currency: 'USDC',
     likes: 120,
     status: 'buy_now',
     type: 'Bottle'
@@ -21,8 +21,8 @@ const mockTrending: NFT[] = [
     name: 'Macallan Sherry Hogshead 2015',
     collection: 'Holy Grail Series',
     image: 'https://picsum.photos/400/400?random=2',
-    price: 120,
-    currency: 'ETH',
+    price: 120000,
+    currency: 'USDC',
     likes: 543,
     status: 'buy_now',
     type: 'Cask'
@@ -32,8 +32,8 @@ const mockTrending: NFT[] = [
     name: 'Yamazaki 25yo',
     collection: 'Japanese Harmony',
     image: 'https://picsum.photos/400/400?random=3',
-    price: 12.8,
-    currency: 'ETH',
+    price: 12800,
+    currency: 'USDC',
     likes: 89,
     status: 'buy_now',
     type: 'Bottle'
@@ -43,8 +43,8 @@ const mockTrending: NFT[] = [
     name: 'Bowmore 1965',
     collection: 'Islay Legends',
     image: 'https://picsum.photos/400/400?random=4',
-    price: 22,
-    currency: 'ETH',
+    price: 22000,
+    currency: 'USDC',
     likes: 210,
     status: 'buy_now',
     type: 'Bottle'
@@ -55,30 +55,27 @@ const Home: React.FC = () => {
   return (
     <div className="animate-fade-in">
       {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-whisky-main">
         <div className="absolute inset-0 z-0">
             {/* Background Image Placeholder */}
-            <div className="absolute inset-0 bg-[url('https://picsum.photos/1920/1080?grayscale&blur=2')] bg-cover bg-center opacity-40"></div>
-            <div className="absolute inset-0 bg-gradient-to-b from-whisky-dark via-transparent to-whisky-main"></div>
-            <div className="absolute inset-0 bg-radial-gradient from-transparent to-whisky-dark"></div>
+            <div className="absolute inset-0 bg-[url('https://picsum.photos/1920/1080?grayscale&blur=2')] bg-cover bg-center opacity-30"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-whisky-main via-transparent to-whisky-main"></div>
+            <div className="absolute inset-0 bg-radial-gradient from-transparent to-whisky-main"></div>
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <div className="inline-block border border-whisky-gold/30 rounded-full px-4 py-1 mb-6 bg-whisky-dark/50 backdrop-blur-sm">
+          <div className="inline-block border border-whisky-gold/30 rounded-full px-4 py-1 mb-6 bg-whisky-card/50 backdrop-blur-sm">
             <span className="text-xs font-semibold text-whisky-gold tracking-widest uppercase">The Premier Spirit Exchange</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-whisky-light via-whisky-gold to-whisky-light drop-shadow-lg">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-whisky-light via-whisky-gold to-whisky-accent drop-shadow-lg">
             Invest in Liquid History
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
             Discover, trade, and own the world's most exclusive whisky casks and bottles as verified NFTs.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/explore" className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-whisky-gold to-whisky-light text-whisky-dark font-bold rounded-full hover:scale-105 transition-transform shadow-[0_0_20px_rgba(212,165,116,0.4)]">
+            <Link to="/explore" className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-whisky-gold to-whisky-accent text-white font-bold rounded-full hover:scale-105 transition-transform shadow-[0_0_20px_rgba(242,165,22,0.4)]">
               Explore NFTs
-            </Link>
-            <Link to="/create" className="w-full sm:w-auto px-8 py-3 border border-whisky-gold/40 text-whisky-light font-bold rounded-full hover:bg-whisky-gold/10 transition-colors backdrop-blur-sm">
-              Start Creating
             </Link>
           </div>
         </div>
@@ -94,13 +91,13 @@ const Home: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-                { title: 'The Macallan Red', floor: '5.2 ETH', img: 'https://picsum.photos/500/300?random=10' },
-                { title: 'Dalmore Decades', floor: '3.1 ETH', img: 'https://picsum.photos/500/300?random=11' },
-                { title: 'Karuizawa Ghost', floor: '15.5 ETH', img: 'https://picsum.photos/500/300?random=12' },
+                { title: 'The Macallan Red', floor: '5,200 USDC', img: 'https://picsum.photos/500/300?random=10' },
+                { title: 'Dalmore Decades', floor: '3,100 USDC', img: 'https://picsum.photos/500/300?random=11' },
+                { title: 'Karuizawa Ghost', floor: '15,500 USDC', img: 'https://picsum.photos/500/300?random=12' },
             ].map((col, idx) => (
-                <div key={idx} className="relative h-64 rounded-xl overflow-hidden group cursor-pointer">
+                <div key={idx} className="relative h-64 rounded-xl overflow-hidden group cursor-pointer border border-whisky-gold/10">
                     <img src={col.img} alt={col.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-whisky-dark via-whisky-dark/20 to-transparent opacity-90"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-whisky-card via-whisky-card/20 to-transparent opacity-90"></div>
                     <div className="absolute bottom-6 left-6">
                         <h3 className="text-xl font-bold font-serif text-white mb-1">{col.title}</h3>
                         <p className="text-sm text-whisky-gold">Floor: {col.floor}</p>
@@ -138,7 +135,7 @@ const Home: React.FC = () => {
             {[1, 2, 3].map((i) => (
                 <div key={i} className="flex items-center justify-between p-4 border-b border-whisky-gold/5 hover:bg-whisky-card/50 transition-colors last:border-none">
                     <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded bg-whisky-dark overflow-hidden border border-whisky-gold/20">
+                        <div className="w-12 h-12 rounded bg-whisky-main overflow-hidden border border-whisky-gold/20">
                             <img src={`https://picsum.photos/50?random=${20+i}`} className="w-full h-full object-cover" alt="item"/>
                         </div>
                         <div>
@@ -149,7 +146,7 @@ const Home: React.FC = () => {
                         </div>
                     </div>
                     <div className="text-right">
-                        <p className="font-bold text-whisky-light">2.4 ETH</p>
+                        <p className="font-bold text-whisky-light">2,400 USDC</p>
                     </div>
                 </div>
             ))}
