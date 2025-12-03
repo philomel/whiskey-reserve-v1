@@ -21,8 +21,8 @@ const Profile: React.FC = () => {
   return (
     <div className="animate-fade-in pb-12">
       {/* Cover Image */}
-      <div className="h-64 md:h-80 bg-whisky-dark relative overflow-hidden">
-        <img src="https://picsum.photos/1920/400?grayscale" alt="cover" className="w-full h-full object-cover opacity-50" />
+      <div className="h-64 md:h-80 bg-gray-900 relative overflow-hidden">
+        <img src="https://picsum.photos/1920/400?grayscale" alt="cover" className="w-full h-full object-cover opacity-60" />
         <div className="absolute inset-0 bg-gradient-to-t from-whisky-main to-transparent"></div>
       </div>
 
@@ -30,15 +30,15 @@ const Profile: React.FC = () => {
         {/* Profile Header */}
         <div className="relative -mt-24 mb-12 flex flex-col items-center md:items-start md:flex-row gap-6">
             <div className="relative">
-                <div className="w-40 h-40 rounded-full border-4 border-whisky-main overflow-hidden bg-whisky-card shadow-2xl">
+                <div className="w-40 h-40 rounded-full border-4 border-white overflow-hidden bg-white shadow-xl">
                     <img src="https://picsum.photos/200/200?random=user" alt="avatar" className="w-full h-full object-cover" />
                 </div>
             </div>
             
             <div className="pt-24 md:pt-28 flex-grow text-center md:text-left">
-                <h1 className="text-3xl font-serif font-bold text-white mb-2">WhiskyConnoisseur</h1>
-                <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-400">
-                    <button className="flex items-center gap-2 hover:text-whisky-gold bg-whisky-card/50 px-3 py-1 rounded-full border border-whisky-gold/10">
+                <h1 className="text-3xl font-serif font-bold text-whisky-dark mb-2">WhiskyConnoisseur</h1>
+                <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-500">
+                    <button className="flex items-center gap-2 hover:text-whisky-dark bg-white px-3 py-1 rounded-full border border-gray-200 shadow-sm">
                         0x71C...9A23 <Copy className="w-3 h-3" />
                     </button>
                     <span>Joined December 2024</span>
@@ -46,25 +46,25 @@ const Profile: React.FC = () => {
             </div>
 
             <div className="pt-0 md:pt-28 flex gap-3">
-                <button className="p-2 border border-whisky-gold/20 rounded-lg hover:bg-whisky-gold/10 text-whisky-gold">
+                <button className="p-2 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 text-gray-600 shadow-sm">
                     <Share2 className="w-5 h-5" />
                 </button>
-                <button className="p-2 border border-whisky-gold/20 rounded-lg hover:bg-whisky-gold/10 text-whisky-gold">
+                <button className="p-2 border border-gray-200 bg-white rounded-lg hover:bg-gray-50 text-gray-600 shadow-sm">
                     <Settings className="w-5 h-5" />
                 </button>
             </div>
         </div>
 
         {/* Tabs */}
-        <div className="flex items-center gap-8 border-b border-whisky-gold/10 mb-8 overflow-x-auto">
+        <div className="flex items-center gap-8 border-b border-gray-200 mb-8 overflow-x-auto">
             {['Owned', 'Created', 'Activity', 'Offers'].map((tab) => (
                 <button 
                     key={tab}
                     onClick={() => setActiveTab(tab.toLowerCase())}
-                    className={`pb-4 text-sm font-medium whitespace-nowrap transition-colors relative ${activeTab === tab.toLowerCase() ? 'text-whisky-gold' : 'text-gray-500 hover:text-gray-300'}`}
+                    className={`pb-4 text-sm font-medium whitespace-nowrap transition-colors relative ${activeTab === tab.toLowerCase() ? 'text-whisky-button font-bold' : 'text-gray-500 hover:text-gray-800'}`}
                 >
                     {tab}
-                    {activeTab === tab.toLowerCase() && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-whisky-gold"></span>}
+                    {activeTab === tab.toLowerCase() && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-whisky-button"></span>}
                 </button>
             ))}
         </div>
@@ -73,9 +73,9 @@ const Profile: React.FC = () => {
         {activeTab === 'owned' && (
             <div>
                 <div className="flex justify-between items-center mb-6">
-                    <p className="text-gray-400 text-sm">4 items</p>
-                    <div className="flex items-center gap-2 border border-whisky-gold/10 rounded-lg p-1">
-                        <Grid className="w-4 h-4 text-whisky-gold" />
+                    <p className="text-gray-500 text-sm">4 items</p>
+                    <div className="flex items-center gap-2 border border-gray-200 rounded-lg p-1 bg-white">
+                        <Grid className="w-4 h-4 text-whisky-dark" />
                     </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -22,21 +22,21 @@ const Activity: React.FC = () => {
 
   const getIcon = (action: string) => {
     switch(action) {
-      case 'bought': return <ShoppingCart className="w-4 h-4 text-green-400" />;
-      case 'listed': return <Tag className="w-4 h-4 text-yellow-400" />;
-      case 'offer': return <Zap className="w-4 h-4 text-blue-400" />;
-      default: return <ArrowRightLeft className="w-4 h-4 text-purple-400" />;
+      case 'bought': return <ShoppingCart className="w-4 h-4 text-green-500" />;
+      case 'listed': return <Tag className="w-4 h-4 text-yellow-600" />;
+      case 'offer': return <Zap className="w-4 h-4 text-blue-500" />;
+      default: return <ArrowRightLeft className="w-4 h-4 text-purple-500" />;
     }
   };
 
   return (
     <div className="container mx-auto px-4 py-8 animate-fade-in max-w-4xl">
-      <h1 className="text-3xl font-serif font-bold text-whisky-light mb-8">Activity Feed</h1>
+      <h1 className="text-3xl font-serif font-bold text-whisky-dark mb-8">Activity Feed</h1>
       
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
         <div className="flex gap-2 overflow-x-auto pb-2">
             {['All', 'Sales', 'Listings', 'Offers', 'Transfers'].map(filter => (
-                <button key={filter} className="px-4 py-2 bg-whisky-card border border-whisky-gold/10 rounded-full text-sm text-gray-400 hover:text-whisky-gold hover:border-whisky-gold/30 transition-colors whitespace-nowrap">
+                <button key={filter} className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm text-gray-500 hover:text-whisky-dark hover:border-whisky-dark transition-colors whitespace-nowrap shadow-sm">
                     {filter}
                 </button>
             ))}
@@ -44,48 +44,48 @@ const Activity: React.FC = () => {
 
         <button 
             onClick={() => setShowMyActivity(!showMyActivity)}
-            className={`flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-lg ${showMyActivity ? 'bg-whisky-gold text-whisky-dark' : 'bg-whisky-card border border-whisky-gold/30 text-whisky-gold hover:bg-whisky-main'}`}
+            className={`flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-md ${showMyActivity ? 'bg-whisky-button text-whisky-button-text' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}`}
         >
             <User className="w-4 h-4" />
             {showMyActivity ? 'Showing My Activity' : 'My Activity'}
         </button>
       </div>
 
-      <div className="bg-whisky-card border border-whisky-gold/10 rounded-xl overflow-hidden shadow-2xl">
+      <div className="bg-white border border-whisky-border rounded-xl overflow-hidden shadow-lg">
         {filteredActivities.length > 0 ? (
             filteredActivities.map((activity, index) => (
-                <div key={activity.id} className="p-4 border-b border-whisky-gold/5 flex items-center gap-4 hover:bg-whisky-main/50 transition-colors">
-                    <div className="w-12 h-12 rounded bg-whisky-main overflow-hidden flex-shrink-0 border border-whisky-gold/10">
+                <div key={activity.id} className="p-4 border-b border-gray-100 flex items-center gap-4 hover:bg-gray-50 transition-colors">
+                    <div className="w-12 h-12 rounded bg-gray-100 overflow-hidden flex-shrink-0 border border-gray-200">
                         <img src={activity.image} alt="item" className="w-full h-full object-cover" />
                     </div>
                     
                     <div className="flex-grow">
                         <div className="flex flex-wrap items-center gap-2 text-sm">
-                            <span className="font-bold text-whisky-gold">{activity.user === currentUser ? 'You' : activity.user}</span>
-                            <span className="text-gray-400 flex items-center gap-1">
+                            <span className="font-bold text-whisky-button">{activity.user === currentUser ? 'You' : activity.user}</span>
+                            <span className="text-gray-500 flex items-center gap-1">
                                 {getIcon(activity.action)}
                                 {activity.action}
                             </span>
-                            <span className="font-bold text-white">{activity.item}</span>
+                            <span className="font-bold text-whisky-dark">{activity.item}</span>
                             {activity.price && (
-                                <span className="text-gray-400">for <span className="text-whisky-light">{activity.price} ETH</span></span>
+                                <span className="text-gray-500">for <span className="text-whisky-dark font-medium">{activity.price} ETH</span></span>
                             )}
                         </div>
-                        <p className="text-xs text-gray-600 mt-1">{activity.time}</p>
+                        <p className="text-xs text-gray-400 mt-1">{activity.time}</p>
                     </div>
 
-                    <button className="text-xs border border-whisky-gold/20 text-whisky-gold px-3 py-1 rounded hover:bg-whisky-gold hover:text-whisky-dark transition-colors">
+                    <button className="text-xs border border-gray-300 text-gray-600 px-3 py-1 rounded hover:bg-gray-100 transition-colors">
                         View
                     </button>
                 </div>
             ))
         ) : (
-            <div className="p-12 text-center text-gray-500">
+            <div className="p-12 text-center text-gray-400">
                 No activity found.
             </div>
         )}
-        <div className="p-4 text-center border-t border-whisky-gold/5">
-            <button className="text-sm text-whisky-muted hover:text-whisky-gold transition-colors">Load More</button>
+        <div className="p-4 text-center border-t border-gray-100">
+            <button className="text-sm text-gray-500 hover:text-whisky-dark transition-colors">Load More</button>
         </div>
       </div>
     </div>

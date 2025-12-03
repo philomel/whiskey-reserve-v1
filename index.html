@@ -7,24 +7,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
               whisky: {
-                dark: '#3A1001',
-                main: '#1E0800',
-                card: '#732002',
-                gold: '#F2A516',
+                main: '#f7f5e9',      // Light Cream Background
+                dark: '#000000',      // Main Text
+                card: '#FFFFFF',      // White Cards
+                gold: '#d4a574',      // Accent Gold (kept for branding elements)
+                button: '#010405',    // Primary Button Background
+                'button-text': '#f7f5e9', // Primary Button Text
                 accent: '#F24B0F',
-                light: '#FFE5B4',
-                muted: '#B08D85'
+                muted: '#6B7280',     // Gray 500 for secondary text
+                border: '#E5E7EB'     // Gray 200 for borders
               }
             },
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Poppins', 'sans-serif'],
               serif: ['Playfair Display', 'serif'],
             }
           }
@@ -32,19 +34,19 @@
       }
     </script>
     <style>
-      /* Custom scrollbar for dark theme */
+      /* Custom scrollbar */
       ::-webkit-scrollbar {
         width: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #1E0800; 
+        background: #f7f5e9; 
       }
       ::-webkit-scrollbar-thumb {
-        background: #732002; 
+        background: #d4a574; 
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #F2A516; 
+        background: #b08d55; 
       }
     </style>
   <script type="importmap">
@@ -60,7 +62,7 @@
 }
 </script>
 </head>
-  <body class="bg-whisky-main text-gray-200 font-sans antialiased selection:bg-whisky-gold selection:text-whisky-dark">
+  <body class="bg-whisky-main text-whisky-dark font-sans antialiased selection:bg-whisky-gold selection:text-white">
     <div id="root"></div>
   </body>
 </html>

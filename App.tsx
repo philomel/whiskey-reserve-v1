@@ -6,10 +6,12 @@ import Explore from './pages/Explore';
 import OTC from './pages/OTC';
 import OTCDealDetail from './pages/OTCDealDetail';
 import CreateOTCDeal from './pages/CreateOTCDeal';
+import MyOTCDeals from './pages/MyOTCDeals';
 import Activity from './pages/Activity';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import NFTDetail from './pages/NFTDetail';
+import NFTPurchase from './pages/NFTPurchase';
 import MyAccount from './pages/MyAccount';
 import NFTManagement from './pages/NFTManagement';
 import Notifications from './pages/Notifications';
@@ -27,6 +29,7 @@ const App: React.FC = () => {
           <Route path="/otc" element={<OTC />} />
           <Route path="/otc/deal/create-otc" element={<CreateOTCDeal />} />
           <Route path="/otc/deal/:id" element={<OTCDealDetail />} />
+          <Route path="/otc/my-deals" element={<MyOTCDeals />} />
 
           {/* DAO Route */}
           <Route path="/dao" element={<DAO />} />
@@ -58,7 +61,8 @@ const App: React.FC = () => {
           <Route path="/settings/privacy" element={<Settings initialTab="privacy" />} />
 
           <Route path="/nft/:id" element={<NFTDetail />} />
-          <Route path="/create" element={<div className="p-20 text-center text-whisky-gold">Create Feature Coming Soon</div>} />
+          <Route path="/nft/:id/purchase" element={<NFTPurchase />} />
+          <Route path="/create" element={<div className="p-20 text-center text-whisky-dark">Create Feature Coming Soon</div>} />
         </Routes>
       </Layout>
     </Router>

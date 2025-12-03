@@ -44,9 +44,9 @@ const Notifications: React.FC = () => {
 
   const getIcon = (type: string) => {
     switch (type) {
-      case 'sold': return <ShoppingBag className="w-5 h-5 text-green-400" />;
-      case 'offer': return <Tag className="w-5 h-5 text-whisky-gold" />;
-      case 'system': return <AlertCircle className="w-5 h-5 text-blue-400" />;
+      case 'sold': return <ShoppingBag className="w-5 h-5 text-green-500" />;
+      case 'offer': return <Tag className="w-5 h-5 text-whisky-button" />;
+      case 'system': return <AlertCircle className="w-5 h-5 text-blue-500" />;
       default: return <AlertCircle className="w-5 h-5 text-gray-400" />;
     }
   };
@@ -60,7 +60,7 @@ const Notifications: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-8 animate-fade-in max-w-4xl">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-serif font-bold text-whisky-light">Notifications</h1>
+        <h1 className="text-3xl font-serif font-bold text-whisky-dark">Notifications</h1>
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -69,17 +69,17 @@ const Notifications: React.FC = () => {
                 <button 
                     key={f}
                     onClick={() => setFilter(f as any)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium capitalize transition-colors ${filter === f ? 'bg-whisky-gold text-whisky-dark' : 'bg-whisky-card border border-whisky-gold/10 text-gray-400 hover:text-whisky-gold'}`}
+                    className={`px-4 py-2 rounded-full text-sm font-medium capitalize transition-colors ${filter === f ? 'bg-whisky-button text-whisky-button-text' : 'bg-white border border-gray-200 text-gray-500 hover:text-whisky-dark'}`}
                 >
                     {f}
                 </button>
             ))}
         </div>
         <div className="flex gap-2">
-            <button className="flex items-center gap-2 px-4 py-2 text-sm text-whisky-gold hover:bg-whisky-card rounded-lg transition-colors">
+            <button className="flex items-center gap-2 px-4 py-2 text-sm text-whisky-button hover:bg-gray-100 rounded-lg transition-colors">
                 <CheckCircle className="w-4 h-4" /> Mark All as Read
             </button>
-            <button className="p-2 text-gray-400 hover:text-whisky-gold transition-colors">
+            <button className="p-2 text-gray-400 hover:text-whisky-dark transition-colors">
                 <Settings className="w-5 h-5" />
             </button>
         </div>
@@ -87,35 +87,35 @@ const Notifications: React.FC = () => {
 
       <div className="space-y-4">
         {filtered.map(notification => (
-            <div key={notification.id} className={`p-4 rounded-xl border transition-colors flex gap-4 ${notification.read ? 'bg-whisky-card/30 border-whisky-gold/5' : 'bg-whisky-card border-whisky-gold/20'}`}>
+            <div key={notification.id} className={`p-4 rounded-xl border transition-colors flex gap-4 ${notification.read ? 'bg-white border-gray-100' : 'bg-blue-50 border-blue-100 shadow-sm'}`}>
                 <div className="flex-shrink-0 mt-1">
                     {notification.image ? (
-                        <div className="w-12 h-12 rounded bg-whisky-dark overflow-hidden border border-whisky-gold/20">
+                        <div className="w-12 h-12 rounded bg-gray-200 overflow-hidden border border-gray-300">
                              <img src={notification.image} alt="thumb" className="w-full h-full object-cover" />
                         </div>
                     ) : (
-                        <div className="w-12 h-12 rounded bg-whisky-dark/50 flex items-center justify-center border border-whisky-gold/10">
+                        <div className="w-12 h-12 rounded bg-gray-100 flex items-center justify-center border border-gray-200">
                             {getIcon(notification.type)}
                         </div>
                     )}
                 </div>
                 <div className="flex-grow">
                     <div className="flex justify-between items-start">
-                        <h3 className={`font-medium ${notification.read ? 'text-gray-300' : 'text-white'}`}>{notification.title}</h3>
-                        {!notification.read && <span className="w-2 h-2 rounded-full bg-whisky-gold"></span>}
+                        <h3 className={`font-medium ${notification.read ? 'text-gray-600' : 'text-whisky-dark'}`}>{notification.title}</h3>
+                        {!notification.read && <span className="w-2 h-2 rounded-full bg-whisky-button"></span>}
                     </div>
-                    <p className="text-sm text-gray-400 mt-1">{notification.message}</p>
+                    <p className="text-sm text-gray-500 mt-1">{notification.message}</p>
                     {notification.type === 'offer' && (
-                        <button className="mt-2 text-xs border border-whisky-gold/20 text-whisky-gold px-3 py-1 rounded hover:bg-whisky-gold hover:text-whisky-dark transition-colors">
+                        <button className="mt-2 text-xs border border-gray-300 text-gray-600 px-3 py-1 rounded hover:bg-gray-100 transition-colors">
                             View Offer
                         </button>
                     )}
-                    <p className="text-xs text-gray-600 mt-2">{notification.time}</p>
+                    <p className="text-xs text-gray-400 mt-2">{notification.time}</p>
                 </div>
             </div>
         ))}
         {filtered.length === 0 && (
-            <div className="text-center py-20 text-gray-500">
+            <div className="text-center py-20 text-gray-400">
                 No notifications found.
             </div>
         )}
